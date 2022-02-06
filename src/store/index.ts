@@ -20,6 +20,11 @@ export default new Vuex.Store({
     addMember(state, member) {
       state.members.push(member);
     },
+    editMemberName(state,member){
+      state.members = state.members.filter((m) => m.email !== member.email);
+      console.log(member);
+      state.members.push(member);
+    },
     removeMember(state, email){
       state.members = state.members.filter((member) => member.email !== email);
     }

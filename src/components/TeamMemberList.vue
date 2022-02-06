@@ -28,7 +28,7 @@
               </p>
             </div>
             <div class="member-change">
-              <button style="" v-on:click='editMemberButton(email)'>Edit</button>
+              <button style="" v-on:click='editMemberButton(member)'>Edit</button>
               <button style="margin-left:20px" v-on:click='removeMemberButton(member.email)'>Remove</button>
             </div>
           </template>
@@ -54,9 +54,17 @@ import Component from 'vue-class-component';
     },
   },
   methods: {
-    editMemberButton(email){
-      if (confirm(`Do you want to edit ${email}?`) === true) {
-        this.$store.commit('editMember', email);
+    editMemberButton(member){
+      if (confirm(`Do you want to edit the data for ${member.email}?`) == true) {
+        var data=prompt("Edit name?",`${member.name}`);
+        if(data!=""){
+          const editData={
+            name:data,
+            email:member.email,
+            role:member.role,
+          };
+          this.$store.commit('editMemberName', editData);
+        }
       }
     },
     removeMemberButton(email) {
@@ -67,7 +75,7 @@ import Component from 'vue-class-component';
   },
 })
 export default class TeamMemberList extends Vue {
-  
+
 }
 </script>
 <style scoped lang="scss">
