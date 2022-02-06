@@ -3,7 +3,7 @@
     <hr>
     <h2>Team Members({{members.length?members.length:"0"}})</h2>
     <button id='invite-button' style="background-color: #6200ea;color: #fff;border: 1px solid #6200ea;">
-      <router-link style='color: #fff;text-decoration:none' to='/inviteMembers'>
+      <router-link style='color: #fff;text-decoration:none' to='/loading'>
         + Invite Members
       </router-link>
     </button>
@@ -57,13 +57,22 @@ import Component from 'vue-class-component';
     editMemberButton(member){
       if (confirm(`Do you want to edit the data for ${member.email}?`) == true) {
         var data=prompt("Edit name?",`${member.name}`);
-        if(data!=""){
+        if(data!=""&&data!=null){
           const editData={
             name:data,
             email:member.email,
             role:member.role,
           };
-          this.$store.commit('editMemberName', editData);
+          this.$store.commit('editMember', editData);
+        }
+        var data2=prompt(`Edit Role of ${data}? If you want to change enter one from the list - {Admin, Team Member, Customer Support}.`,`${member.role}`);
+        if(data2=="Admin"||data2=="Team Member"||data2=="Customer Support"){
+          const editData={
+            name:member.name,
+            email:member.email,
+            role:data2,
+          };
+          this.$store.commit('editMember', editData);
         }
       }
     },

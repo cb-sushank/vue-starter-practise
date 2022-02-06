@@ -23,6 +23,11 @@ const routes: Array<RouteConfig> = [
     name: 'InviteMembers',
     component: () => import('../components/InviteMembers.vue'),
   },
+  {
+    path: '/loading',
+    name: 'Loading',
+    component: () => import('../components/Loading.vue'),
+  },
 ];
 
 const router = new VueRouter({
