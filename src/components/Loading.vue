@@ -15,7 +15,7 @@ import Component from 'vue-class-component';
   name: "Loading",
   mounted(){
     document.title="Loading";
-    setTimeout(() => {this.$router.push("./InviteMembers");}, 3000);
+    setTimeout(() => {this.$router.push("./InviteMembers");}, 2000);
   },
 })
 export default class SampleTemplate extends Vue {

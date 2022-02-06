@@ -18,11 +18,16 @@ export default new Vuex.Store({
   },
   mutations: {
     addMember(state, member) {
-      state.members.push(member);
+      var xs=state.members.filter((m) => m.email === member.email)
+      if(xs==null||xs.length==0){
+        state.members.push(member);
+      }
+      else{
+        alert("Trying to add existing registered mailid");
+      }
     },
     editMember(state,member){
       state.members = state.members.filter((m) => m.email !== member.email);
-      console.log(member);
       state.members.push(member);
     },
     removeMember(state, email){
