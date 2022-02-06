@@ -2,10 +2,10 @@
   <div>
     <hr>
     <h2>Team Members({{members.length?members.length:"0"}})</h2>
-    <button id="invite-button" 
-      style="background-color: #6200ea;color: #fff;border: 1px solid #6200ea;text-decoration: none;"
-      v-on:click='AddMemberModal()'>
-      + Invite Members
+    <button id='invite-button' style="background-color: #6200ea;color: #fff;border: 1px solid #6200ea;">
+      <router-link style='color: #fff;text-decoration:none' to='/inviteMembers'>
+        + Invite Members
+      </router-link>
     </button>
     <hr>
     <b-card >
@@ -54,9 +54,6 @@ import Component from 'vue-class-component';
     },
   },
   methods: {
-    addMemberModal(){
-      
-    },
     editMemberButton(email){
       if (confirm(`Do you want to edit ${email}?`) === true) {
         this.$store.commit('editMember', email);
